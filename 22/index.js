@@ -28,4 +28,15 @@ p.A = servers => servers.reduce((count, server) => {
   }, 0);
 }, 0);
 
+p.B = servers => {
+  let row = [];
+  servers.forEach(server => {
+    row.push((server.used === 0) ? '_' : (server.used > 100) ? '#' : '.');
+    if (+server.position[1] === 30) {
+      console.log(row.join(' '));
+      row = [];
+    }
+  });
+};
+
 p.run();
